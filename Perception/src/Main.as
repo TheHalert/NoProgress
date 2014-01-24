@@ -7,19 +7,16 @@ package
 	 * ...
 	 * @author Steven
 	 */
-	public class Main extends Sprite 
+	import org.flixel.FlxGame;
+	[SWF(width = "800", height = "600", backgroundColor = "#82CAFA")];
+	public class Main extends FlxGame 
 	{
 		
 		public function Main():void 
 		{
-			if (stage) init();
-			else addEventListener(Event.ADDED_TO_STAGE, init);
-		}
-		
-		private function init(e:Event = null):void 
-		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
-			// entry point
+			
+			super(800, 600, Mainmenu);
+			useSoundHotKeys = false;
 		}
 		
 	}
