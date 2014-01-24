@@ -1,4 +1,4 @@
-package  
+package SpaceInvader
 {
 	import org.flixel.*;
 	/**

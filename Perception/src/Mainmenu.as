@@ -4,6 +4,7 @@ package
 	import flash.events.KeyboardEvent;
 	import org.flixel.*;
 	import flash.display.StageDisplayState;
+	import SpaceInvader.InvaderGame;
 	/**
 	 * ...
 	 * @author Steven
