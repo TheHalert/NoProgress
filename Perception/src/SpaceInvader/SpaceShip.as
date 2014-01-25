@@ -48,6 +48,7 @@ package SpaceInvader
 				return;
 			ship.health -= 50;
 			bullet.kill();
+			
 		}
 		
 		

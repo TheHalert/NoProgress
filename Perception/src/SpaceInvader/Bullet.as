@@ -9,6 +9,7 @@ package SpaceInvader
 	{
 		var goingUp:Boolean;
 		[Embed(source = "/image/bullets.png")] private var bullets:Class;
+		[Embed(source = "/image/bullets.png")] private var bulletenemy:Class;
 		public function Bullet(xstart:Number, ystart:Number, goUp:Boolean) 
 		{
 			super(xstart, ystart, bullets);

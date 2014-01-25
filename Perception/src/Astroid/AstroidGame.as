@@ -18,6 +18,12 @@ package Astroid
 			FlxG.worldBounds.make(0, 0, FlxG.width, FlxG.height );
 			ship = new SpaceShip(FlxG.width / 2, FlxG.height / 2);
 			add(ship);
+			
+		}
+		override public function update():void 
+		{
+			super.update();
+			
 		}
 	}
 
