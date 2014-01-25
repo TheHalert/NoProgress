@@ -72,5 +72,15 @@ package  Pong
 				this.y = FlxG.height - height - 10;
 			}
 		}
+		
+		public function onBulletCollision(pad:PongPad, bullet:FlxObject):void 
+		{
+			if ( !pad.m_isAi )
+			{
+				return;
+			}
+			
+			bullet.kill();
+		}
 	}
 }
