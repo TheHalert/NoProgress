@@ -7,8 +7,10 @@ package SpaceInvader
 	 */
 	public class Alien extends FlxSprite
 	{
-		[Embed(source = '../image/spacemonster.png')] private var alienimage:Class;
+		[Embed(source = '../image/spacemonsterA_1.png')] private var alienimage1:Class;
+		[Embed(source = '../image/spacemonsterA_2.png')] private var alienimage2:Class;
 		static var nextjumpex:Number = 0;
+		var image1:Boolean = true;
 		var nextjump:Number = 0;
 		var leftpoint:Number;
 		var rightpoint:Number;
@@ -17,7 +19,7 @@ package SpaceInvader
 		var laststep:int;
 		public function Alien(lpos:Number,rpos:Number, ypos:Number) 
 		{
-			super(0, 0, alienimage);
+			super(0, 0, alienimage1);
 			x = lpos;
 			y = ypos;
 			leftpoint = lpos;
@@ -33,6 +35,12 @@ package SpaceInvader
 				if(nextjump == nextjumpex)
 					nextjumpex = new Date().time + 500; 
 				nextjump = nextjumpex;
+				if (image1) {
+					loadGraphic(alienimage2);
+				}else {
+					loadGraphic(alienimage1);
+				}
+				image1 = !image1;
 				if(movingright)
 					x += step;
 				else
@@ -44,6 +52,7 @@ package SpaceInvader
 				
 			}
 		}
+
 		
 	}
 

@@ -38,6 +38,7 @@ package SpaceInvader
 				
 				y -= step;
 			}
+			
 		}
 		
 		

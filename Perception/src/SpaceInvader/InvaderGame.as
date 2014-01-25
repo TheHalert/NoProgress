@@ -9,6 +9,9 @@ package SpaceInvader
 	{
 		private var ship:SpaceShip;
 		private var camerapoint:FlxObject;
+		private var monsters:FlxGroup =new FlxGroup();
+		private var bullets:FlxGroup = new FlxGroup();
+		private var lastshot:Number;
 		public function InvaderGame() 
 		{
 			
@@ -23,9 +26,11 @@ package SpaceInvader
 					monster.y += ((monster.height * 1.5) * ie);
 					monster.leftpoint += ((monster.width * 1.5) * i);
 					monster.rightpoint -= ((monster.width * 1.5) * (9 - i));
-					add(monster);
+					monsters.add(monster);
 				}
 			}
+			add(monsters);
+			add(bullets);
 			ship = new SpaceShip(0, FlxG.width - 40, FlxG.height + 300 , FlxG.height - 50);
 			add(ship);
 			camerapoint = new FlxObject(ship.x, ship.y - (FlxG.height / 2), 5, 5);
@@ -33,14 +38,22 @@ package SpaceInvader
 			FlxG.camera.setBounds(0, 0, FlxG.width, FlxG.height + 300, true);
 			FlxG.worldBounds.make(0, 0, FlxG.width, FlxG.height + 300);
 			FlxG.camera.follow(camerapoint);
-			
+			lastshot = new Date().time - 1000;
 		}
 		public override function update():void {
 			super.update();
 			camerapoint.y = ship.y - (FlxG.height / 2) + ship.height * 2;
-			
+			if (FlxG.keys.justPressed("SPACE") && new Date().time - lastshot > 1000) {
+				var bullet:Bullet = new Bullet(ship.x + (ship.width / 5), ship.y, true);
+				bullets.add(bullet);
+				lastshot = new Date().time;
+			}
+			FlxG.overlap(monsters, bullets, bullethitmonster);
 		}
-		
+		function bullethitmonster(alien:Alien, bullet:Bullet):void {
+			alien.kill();
+			bullet.kill();
+		}
 	}
 
 }
