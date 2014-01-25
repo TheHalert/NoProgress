@@ -64,7 +64,7 @@ package  Pong
 				m_ball.onPadCollision( m_aiPad );
 			}
 
-			if ( FlxG.overlap( m_aiPad, m_bullets, m_aiPad.onBulletCollision ) )
+			if ( FlxG.collide( m_aiPad, m_bullets, m_aiPad.onBulletCollision ) )
 			{
 				m_playerScore++;
 				m_playerText.text = m_playerScore.toString();
