@@ -1,11 +1,13 @@
 package  
 {
+	import Breakout.BreakoutState;
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
 	import org.flixel.*;
 	import flash.display.StageDisplayState;
 	import SpaceInvader.InvaderGame;
 	import Pong.PongGame;
+	import Breakout.BreakoutState;
 	
 	/**
 	 * ...
@@ -15,6 +17,7 @@ package
 	{
 		public var startbuttonpong:FlxButton;
 		public var startbuttoninvader:FlxButton;
+		public var startbuttonbreakout:FlxButton;
 		public function Mainmenu() 
 		{
 			
@@ -37,6 +40,12 @@ package
 			startbuttonpong.x = FlxG.width / 2 - startbuttonpong.width / 2 ;
 			startbuttonpong.y = FlxG.height / 2 - startbuttonpong.height / 2;
 			add(startbuttonpong);
+			
+			// breakout button
+			startbuttonbreakout = new FlxButton( 0, 0, "Start Breakout", startbreakoutgame );
+			startbuttonbreakout.x = startbuttonpong.x + startbuttonpong.width + 40;
+			startbuttonbreakout.y = FlxG.height / 2 - startbuttonbreakout.height / 2;
+			add( startbuttonbreakout );
 		}
 		public function startgameinvader():void {
 			//hide mouse and switch state
@@ -47,6 +56,11 @@ package
 			//hide mouse and switch state
 			FlxG.mouse.hide();
 			FlxG.switchState(new InvaderGame);
+		}
+		public function startbreakoutgame():void {
+			//hide mouse and switch state
+			FlxG.mouse.hide();
+			FlxG.switchState(new BreakoutState );
 		}
 		private function downkey(e:KeyboardEvent = null):void {
 			//if F is press togglefullscreen

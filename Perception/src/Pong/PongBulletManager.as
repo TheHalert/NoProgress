@@ -16,7 +16,8 @@ package Pong
 		{
 			super();
             m_maxBullets = maxBullets;
-			m_waitFrame = 0;
+			m_waitFrame = 2;			
+			
             for ( var i:int = 0; i < maxBullets; ++i )
             {
                 add( new PongBullet );
