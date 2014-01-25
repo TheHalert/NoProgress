@@ -7,7 +7,8 @@ package SpaceInvader
 	 */
 	public class InvaderGame extends FlxState
 	{
-		
+		private var ship:SpaceShip;
+		private var camerapoint:FlxObject;
 		public function InvaderGame() 
 		{
 			
@@ -25,9 +26,18 @@ package SpaceInvader
 					add(monster);
 				}
 			}
+			ship = new SpaceShip(0, FlxG.width - 40, FlxG.height + 300 , FlxG.height - 50);
+			add(ship);
+			camerapoint = new FlxObject(ship.x, ship.y - (FlxG.height / 2), 5, 5);
+			add(camerapoint);
+			FlxG.camera.setBounds(0, 0, FlxG.width, FlxG.height + 300, true);
+			FlxG.worldBounds.make(0, 0, FlxG.width, FlxG.height + 300);
+			FlxG.camera.follow(camerapoint);
+			
 		}
 		public override function update():void {
 			super.update();
+			camerapoint.y = ship.y - (FlxG.height / 2) + ship.height * 2;
 			
 		}
 		
