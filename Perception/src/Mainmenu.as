@@ -31,10 +31,10 @@ package
 			startbuttoninvader = new FlxButton(0, 0, "Start invader" , startgameinvader);
 			startbuttoninvader.x = FlxG.width / 2 - startbuttoninvader.width ;
 			startbuttoninvader.y = FlxG.height / 2 - startbuttoninvader.height / 2;
-			add(startbuttoninvader);
+			//add(startbuttoninvader);
 			//the pong button
-			startbuttonpong = new FlxButton(0, 0, "Start pong" , startgamepong);
-			startbuttonpong.x = FlxG.width / 2 + startbuttonpong.width / 2 ;
+			startbuttonpong = new FlxButton(0, 0, "Start" , startgamepong);
+			startbuttonpong.x = FlxG.width / 2 - startbuttonpong.width / 2 ;
 			startbuttonpong.y = FlxG.height / 2 - startbuttonpong.height / 2;
 			add(startbuttonpong);
 		}
@@ -46,7 +46,7 @@ package
 		public function startgamepong():void {
 			//hide mouse and switch state
 			FlxG.mouse.hide();
-			FlxG.switchState(new PongGame);
+			FlxG.switchState(new InvaderGame);
 		}
 		private function downkey(e:KeyboardEvent = null):void {
 			//if F is press togglefullscreen

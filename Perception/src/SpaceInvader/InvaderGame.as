@@ -1,5 +1,6 @@
 package SpaceInvader
 {
+	import Astroid.AstroidGame;
 	import org.flixel.*;
 	/**
 	 * ...
@@ -52,6 +53,10 @@ package SpaceInvader
 		public override function update():void {
 			super.update();
 			camerapoint.y = ship.y - (FlxG.height / 2) + ship.height * 2;
+			if (ship.health <= 0){
+				var ending:Ending = new Ending(false);
+				add(ending);
+			}
 			if (FlxG.keys.justPressed("SPACE") && new Date().time - lastshot > 1000) {
 				var bullet:Bullet = new Bullet(ship.x + (ship.width / 5), ship.y, true);
 				bullets.add(bullet);
@@ -59,8 +64,10 @@ package SpaceInvader
 			}
 			FlxG.overlap(monsters, bullets, bullethitmonster);
 			if(FlxG.overlap(ship, exit)){
-				FlxG.switchState(new Mainmenu);
+				var ending:Ending = new Ending(true, new AstroidGame);
+				add(ending);
 			}
+			
 			if (FlxG.overlap(ship, bullets, ship.bullethit));
 			if (new Date().time - allienlastshot > 1000) {
 				var collum:int = Tools.getRandomBetween(0, 9);

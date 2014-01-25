@@ -70,7 +70,8 @@ package  Pong
 				m_playerText.text = m_playerScore.toString();
 				if ( m_playerScore >= 10 )
 				{
-					FlxG.switchState( new SpaceInvader.InvaderGame() );
+					var ending:Ending = new Ending(true, new SpaceInvader.InvaderGame());
+					add(ending);
 				}
 			}
 				
