@@ -5,6 +5,8 @@ package
 	import org.flixel.*;
 	import flash.display.StageDisplayState;
 	import SpaceInvader.InvaderGame;
+	import Pong.PongGame;
+	
 	/**
 	 * ...
 	 * @author Steven
