@@ -72,12 +72,12 @@ package Breakout
 				m_ball.onCollisionWithPad( m_pad );
 			}
 			
-			if ( FlxG.collide( m_ball, m_topBricks, this.onBallToBrickCollision ) )
+			if ( FlxG.overlap( m_ball, m_topBricks, this.onBallToBrickCollision ) )
 			{
 			
 			}
 			
-			if ( FlxG.collide( m_ball, m_mirrorBlocks, this.onBallToMirrorBrickCollision ) )
+			if ( FlxG.overlap( m_ball, m_mirrorBlocks, this.onBallToMirrorBrickCollision ) )
 			{			
 				if ( m_topBricks.countLiving() == 0 )
 				{
