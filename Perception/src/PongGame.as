@@ -3,6 +3,7 @@ package
 	import flash.automation.KeyboardAutomationAction;
 	import Pong.*;
 	import org.flixel.*;
+	import SpaceInvader.InvaderGame;
 	/**
 
 	 * ...
@@ -13,6 +14,7 @@ package
 		private var m_playerPad:PongPad;
 		private var m_aiPad:PongPad;
 		private var m_ball:PongBall;
+		private var m_bullets:PongBulletManager;
 		
 		public var m_playerScore:int = 0;
 		public var m_aiScore:int = 0;
@@ -34,6 +36,9 @@ package
 			m_ball = new PongBall( FlxG.width / 2, FlxG.height / 2, 150 );
 			add( m_ball );
 			
+			m_bullets = new PongBulletManager( 40 );
+			add( m_bullets );
+			
 			// setup ui
 			var fontSize:Number = 42;
 			m_playerText = new FlxText( 100, 40, fontSize, m_playerScore.toString() ).setFormat( null, fontSize ); // , 0x263332, null, 128, "center");
@@ -45,6 +50,11 @@ package
 		
 		public override function update():void 
 		{	
+			if ( FlxG.keys.SPACE )
+			{
+				m_bullets.fire( m_playerPad.x, m_playerPad.y, 400 );
+			}
+			
 			if ( m_ball.overlaps( m_playerPad ) )
 			{
 				m_ball.onPadCollision( m_playerPad );
@@ -54,6 +64,16 @@ package
 				m_ball.onPadCollision( m_aiPad );
 			}
 
+			if ( FlxG.overlap( m_aiPad, m_bullets, m_aiPad.onBulletCollision ) )
+			{
+				m_playerScore++;
+				m_playerText.text = m_playerScore.toString();
+				if ( m_playerScore >= 10 )
+				{
+					FlxG.switchState( new SpaceInvader.InvaderGame() );
+				}
+			}
+				
 			super.update();
 		}
 		
