@@ -12,6 +12,10 @@ package SpaceInvader
 		private var monsters:FlxGroup =new FlxGroup();
 		private var bullets:FlxGroup = new FlxGroup();
 		private var lastshot:Number;
+		[Embed(source = "/image/exit.png")] private var exitimage:Class;
+		private var exit:FlxSprite;
+		private var monstersarray:Array = new Array();
+		private var allienlastshot:Number;
 		public function InvaderGame() 
 		{
 			
@@ -27,8 +31,12 @@ package SpaceInvader
 					monster.leftpoint += ((monster.width * 1.5) * i);
 					monster.rightpoint -= ((monster.width * 1.5) * (9 - i));
 					monsters.add(monster);
+					monstersarray.push(monster);
 				}
 			}
+			exit = new FlxSprite(0, FlxG.height + 200, exitimage);
+			exit.x = FlxG.width - exit.width;
+			add(exit);
 			add(monsters);
 			add(bullets);
 			ship = new SpaceShip(0, FlxG.width - 40, FlxG.height + 300 , FlxG.height - 50);
@@ -39,6 +47,7 @@ package SpaceInvader
 			FlxG.worldBounds.make(0, 0, FlxG.width, FlxG.height + 300);
 			FlxG.camera.follow(camerapoint);
 			lastshot = new Date().time - 1000;
+			allienlastshot = new Date().time - 1000;
 		}
 		public override function update():void {
 			super.update();
@@ -49,8 +58,37 @@ package SpaceInvader
 				lastshot = new Date().time;
 			}
 			FlxG.overlap(monsters, bullets, bullethitmonster);
+			if(FlxG.overlap(ship, exit)){
+				FlxG.switchState(new Mainmenu);
+			}
+			if (FlxG.overlap(ship, bullets, ship.bullethit));
+			if (new Date().time - allienlastshot > 1000) {
+				var collum:int = Tools.getRandomBetween(0, 9);
+				var row:int = 4;
+				while (row >= 0 ) {
+					var currentmonster:Alien =  monstersarray[collum + (10 * row)];
+					if (currentmonster.alive) {
+						var bullet:Bullet = new Bullet(currentmonster.x + (currentmonster.width / 5), currentmonster.y + currentmonster.height, false);
+						bullets.add(bullet);
+						bullet.angle = 180;
+						allienlastshot = new Date().time;
+						break;
+					}
+					row--;
+				}
+			}
+			
 		}
 		function bullethitmonster(alien:Alien, bullet:Bullet):void {
+			if (!bullet.goingUp)
+				return;
+			for (var i:int = 0; i < 10; i++) {
+				if (monstersarray[i] == alien)
+				{
+					bullet.kill();
+					return;
+				}
+			}
 			alien.kill();
 			bullet.kill();
 		}

@@ -21,9 +21,12 @@ package SpaceInvader
 			rightpoint = rpos;
 			downpoint = dpos;
 			toppoint = ypos;
+			health = 100;
 		}
 		public override function update():void {
 			super.update();
+			if (health <= 0)
+				kill();
 			if (FlxG.keys.pressed("RIGHT") && x + step < rightpoint){
 				x  += step;
 			}
@@ -39,6 +42,17 @@ package SpaceInvader
 				y -= step;
 			}
 			
+		}
+		public function bullethit(ship:SpaceShip, bullet:Bullet):void {
+			if (bullet.goingUp)
+				return;
+			ship.health -= 50;
+			bullet.kill();
+		}
+		override public function kill():void 
+		{
+			super.kill();
+			FlxG.resetState();
 		}
 		
 		
