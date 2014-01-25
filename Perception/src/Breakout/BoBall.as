@@ -9,7 +9,7 @@ package Breakout
 	 */
 	public class BoBall  extends PongBall
 	{
-		
+		[Embed(source = "/audio/pong.mp3")] private var pongsound:Class;
 		public function BoBall(x:int, y:int, speed:int, rotation:int) 
 		{	
 			super( x, y, speed, rotation, false );
@@ -52,6 +52,7 @@ package Breakout
 				this.y = pad.y + pad.height + 1;
 			}
 			velocity.y *= -1;
+			FlxG.play(pongsound);
 		}
 		
 		public static function onCollisionWithBrick( ball:BoBall, brick:BoBrick )
@@ -59,6 +60,7 @@ package Breakout
 			//brick.exists = false;
 			brick.kill();
 			ball.velocity.y *= -1;
+			
 			//ResetVelocity( 360 );
 		}
 	}

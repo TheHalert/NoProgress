@@ -15,6 +15,9 @@ package SpaceInvader
 		private var bullets:FlxGroup = new FlxGroup();
 		private var lastshot:Number;
 		[Embed(source = "/image/exit.png")] private var exitimage:Class;
+		[Embed(source = '../audio/cannon.mp3')] private var cannon:Class;
+		[Embed(source = '../audio/alienshot.mp3')] private var alienshot:Class;
+		
 		private var exit:FlxSprite;
 		private var monstersarray:Array = new Array();
 		private var allienlastshot:Number;
@@ -63,6 +66,7 @@ package SpaceInvader
 				var bullet:Bullet = new Bullet(ship.x + (ship.width / 5), ship.y, true);
 				bullets.add(bullet);
 				lastshot = new Date().time;
+				FlxG.play(cannon);
 			}
 			FlxG.overlap(monsters, bullets, bullethitmonster);
 			if(FlxG.overlap(ship, exit)){
@@ -79,6 +83,7 @@ package SpaceInvader
 					if (currentmonster.alive) {
 						var bullet:Bullet = new Bullet(currentmonster.x + (currentmonster.width / 5), currentmonster.y + currentmonster.height, false);
 						bullets.add(bullet);
+						FlxG.play(alienshot);						
 						allienlastshot = new Date().time;
 						break;
 					}

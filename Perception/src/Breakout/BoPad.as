@@ -13,6 +13,7 @@ package Breakout
 		{
 			super( posX, posY );
 			makeGraphic( 65, 10 );
+			
 			maxVelocity.x = speed;
 		}
 		

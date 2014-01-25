@@ -1,5 +1,6 @@
 package  
 {
+	import Astroid.AstroidGame;
 	import Breakout.BreakoutState;
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
@@ -17,6 +18,7 @@ package
 	{
 		public var startbuttonpong:FlxButton;
 		public var startbuttoninvader:FlxButton;
+		public var startbuttonastroid:FlxButton;
 		public var startbuttonbreakout:FlxButton;
 		public function Mainmenu() 
 		{
@@ -32,14 +34,19 @@ package
 			FlxG.resetCameras(new FlxCamera(0, 0, FlxG.width, FlxG.height));
 			//invader button
 			startbuttoninvader = new FlxButton(0, 0, "Start invader" , startgameinvader);
-			startbuttoninvader.x = FlxG.width / 2 - startbuttoninvader.width ;
+			startbuttoninvader.x = FlxG.width / 2 - startbuttoninvader.width * 2;
 			startbuttoninvader.y = FlxG.height / 2 - startbuttoninvader.height / 2;
-			//add(startbuttoninvader);
+			add(startbuttoninvader);
 			//the pong button
-			startbuttonpong = new FlxButton(0, 0, "Start" , startgamepong);
+			startbuttonpong = new FlxButton(0, 0, "Start pong" , startgamepong);
 			startbuttonpong.x = FlxG.width / 2 - startbuttonpong.width / 2 ;
 			startbuttonpong.y = FlxG.height / 2 - startbuttonpong.height / 2;
 			add(startbuttonpong);
+			
+				startbuttonastroid = new FlxButton(0, 0, "Start Astroid" , stargameastroid);
+			startbuttonastroid.x = FlxG.width / 2 - startbuttonastroid.width *4 ;
+			startbuttonastroid.y = FlxG.height / 2 - startbuttonastroid.height / 2;
+			add(startbuttonastroid);
 			
 			// breakout button
 			startbuttonbreakout = new FlxButton( 0, 0, "Start Breakout", startbreakoutgame );
@@ -50,7 +57,12 @@ package
 		public function startgameinvader():void {
 			//hide mouse and switch state
 		    FlxG.mouse.hide();
-			FlxG.switchState(new PongGame);
+			FlxG.switchState(new  InvaderGame);
+		}
+		public function stargameastroid():void {
+			//hide mouse and switch state
+		    FlxG.mouse.hide();
+			FlxG.switchState(new  AstroidGame);
 		}
 		public function startgamepong():void {
 			//hide mouse and switch state
@@ -115,7 +127,7 @@ package
             //    Anyways, we're just going to update the fullscreen button and dimensions text
 			startbuttoninvader.x = FlxG.width / 2 - startbuttoninvader.width / 2;
 			startbuttoninvader.y = FlxG.height / 2 - startbuttoninvader.height / 2;
-						startbuttonpong.x = FlxG.width / 2 + startbuttonpong.width / 2 ;
+			startbuttonpong.x = FlxG.width / 2 + startbuttonpong.width / 2 ;
 			startbuttonpong.y = FlxG.height / 2 - startbuttonpong.height / 2;
 		
  

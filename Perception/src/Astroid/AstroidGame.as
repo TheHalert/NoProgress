@@ -12,6 +12,8 @@ package Astroid
 		var bullets:FlxGroup = new FlxGroup();
 		private var lastshot:Number;
 		[Embed(source = '../image/warpdrive.png')] private var warpimage:Class;
+		[Embed(source = '../audio/cannon.mp3')] private var cannon:Class;
+		[Embed(source = '../audio/warp.mp3')] private var warpsound:Class;
 		var warp:FlxSprite;
 		
 		public function AstroidGame() 
@@ -42,21 +44,24 @@ package Astroid
 			if (ship.health <= 0){
 				var ending:Ending = new Ending(false);
 				add(ending);
-				ship.kill();
+				//ship.kill();
 			}
 			FlxG.overlap(ship, astroids, ship.hitastroid);
 			FlxG.overlap(bullets, astroids, bullethitmonster);
 			if (Math.sqrt(ship.velocity.x * ship.velocity.x + ship.velocity.y * ship.velocity.y) > 900) {
+				if (!Ending.endingrunning)
+					FlxG.play(warpsound);
 				var ending:Ending = new Ending(true, new Mainmenu);
 				add(ending);
-			
+				
 			}
 			if (Ending.endingrunning && ship.health > 0)
 				warp.alpha += 0.004;
 			
-			if (FlxG.keys.justPressed("SPACE") && new Date().time - lastshot > 500 && ship.alive) {
+			if (FlxG.keys.justPressed("SPACE") && new Date().time - lastshot > 500 && ship.health > 0) {
 				var bullet:Bullet = new Bullet(ship.x + (ship.width / 5), ship.y, ship.angle, ship.velocity.magnitude());
 				bullets.add(bullet);
+				FlxG.play(cannon);
 				lastshot = new Date().time;
 			}
 		}

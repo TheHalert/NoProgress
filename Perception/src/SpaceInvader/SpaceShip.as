@@ -9,7 +9,7 @@ package SpaceInvader
 	{
 		
 		[Embed(source = '../image/spaceship.png')] private var shipimage:Class;
-		
+		[Embed(source = '../audio/cannon.mp3')] private var cannon:Class;
 		var leftpoint:Number;
 		var rightpoint:Number;
 		var toppoint:Number;

@@ -16,7 +16,7 @@ package Breakout
 		private var m_topBricks:FlxGroup;
 		private var m_mirrorBlocks:FlxGroup;		
 		private var m_worldBoundAtStart:FlxRect;
-		
+		[Embed(source = "/audio/ding.mp3")] private var dingsound:Class;
 		public function BreakoutState() 
 		{
 			
@@ -94,6 +94,7 @@ package Breakout
 		{
 			m_ball.y = brick.y + brick.height + 1;
 			m_ball.velocity.y *= -1;
+			
 			//m_ball.ResetVelocity( 360 );
 		}
 		
@@ -110,6 +111,7 @@ package Breakout
 			brick.kill();
 			//m_ball.velocity.y *= -1;
 			m_ball.ResetVelocity( 360 );
+			FlxG.play(dingsound);
 		}
 	}
 

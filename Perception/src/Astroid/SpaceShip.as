@@ -8,7 +8,8 @@ package Astroid
 	public class SpaceShip extends FlxSprite
 	{
 		[Embed(source = '../image/spaceship.png')] private var shipimage:Class;
-		
+		[Embed(source = '../image/explosion.png')] private var explode:Class;
+		[Embed(source = '../audio/crash.mp3')] private var crash:Class;
 		public function SpaceShip(xpos:Number, ypos:Number) 
 		{
 			super(xpos, ypos, shipimage);
@@ -18,7 +19,8 @@ package Astroid
 		override public function update():void 
 		{
 			super.update();
-			
+			if (health <= 0)
+				return;
 			if (FlxG.keys.pressed("RIGHT")){
 				angle += 5;
 			}
@@ -65,7 +67,11 @@ package Astroid
 			if (Ending.endingrunning)
 				return;
 			astroid.kill();
-			ship.health -= 100;
+			health -= 100;
+			loadGraphic(explode);
+			FlxG.play(crash);
+			velocity.x = 0;
+			velocity.y = 0;
 		}
 		
 	}
