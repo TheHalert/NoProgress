@@ -50,12 +50,12 @@ package
 		public function startgameinvader():void {
 			//hide mouse and switch state
 		    FlxG.mouse.hide();
-			FlxG.switchState(new InvaderGame);
+			FlxG.switchState(new PongGame);
 		}
 		public function startgamepong():void {
 			//hide mouse and switch state
 			FlxG.mouse.hide();
-			FlxG.switchState(new InvaderGame);
+			FlxG.switchState(new PongGame);
 		}
 		public function startbreakoutgame():void {
 			//hide mouse and switch state
