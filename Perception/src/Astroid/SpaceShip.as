@@ -25,6 +25,25 @@ package Astroid
 			    velocity.x += Math.sin((angle /180) * Math.PI) * 5;
 				velocity.y -= Math.cos((angle /180) * Math.PI) * 5;
 			}
+			else {
+				if (velocity.x > 2) {
+					velocity.x -= 2;
+				}
+				else if (velocity.x < -2) {
+					velocity.x += 2;
+				}else {
+					velocity.x = 0;
+				}
+				
+				if (velocity.y > 2) {
+					velocity.y -= 2;
+				}
+				else if (velocity.y < -2) {
+					velocity.y += 2;
+				}else {
+					velocity.y = 0;
+				}
+			}
 			if (x < 0) {
 				x = FlxG.width;
 			}

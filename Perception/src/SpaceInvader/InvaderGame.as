@@ -77,7 +77,6 @@ package SpaceInvader
 					if (currentmonster.alive) {
 						var bullet:Bullet = new Bullet(currentmonster.x + (currentmonster.width / 5), currentmonster.y + currentmonster.height, false);
 						bullets.add(bullet);
-						bullet.angle = 180;
 						allienlastshot = new Date().time;
 						break;
 					}

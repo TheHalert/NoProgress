@@ -8,11 +8,16 @@ package SpaceInvader
 	public class Bullet extends FlxSprite
 	{
 		var goingUp:Boolean;
-		[Embed(source = "/image/bullets.png")] private var bullets:Class;
-		[Embed(source = "/image/bullets.png")] private var bulletenemy:Class;
+		[Embed(source = "/image/bullets.png")] private var bullet:Class;
+		[Embed(source = "/image/enemybullet.png")] private var bulletenemy:Class;
 		public function Bullet(xstart:Number, ystart:Number, goUp:Boolean) 
 		{
-			super(xstart, ystart, bullets);
+			var imagetouse:Class
+			if (goUp)
+				imagetouse = bullet;
+			else
+				imagetouse = bulletenemy;
+			super(xstart, ystart, imagetouse);
 			goingUp = goUp;
 		}
 		override public function update():void 

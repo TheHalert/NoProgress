@@ -23,7 +23,10 @@ package Astroid
 		override public function update():void 
 		{
 			super.update();
-			
+			if (Math.sqrt(ship.velocity.x * ship.velocity.x + ship.velocity.y * ship.velocity.y) > 1300) {
+				var ending:Ending = new Ending(true, new Mainmenu);
+				add(ending);
+			}
 		}
 	}
 

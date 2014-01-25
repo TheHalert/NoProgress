@@ -9,6 +9,7 @@ package SpaceInvader
 	{
 		
 		[Embed(source = '../image/spaceship.png')] private var shipimage:Class;
+		
 		var leftpoint:Number;
 		var rightpoint:Number;
 		var toppoint:Number;
@@ -27,6 +28,7 @@ package SpaceInvader
 			super.update();
 			if (health <= 0)
 				kill();
+			
 			if (FlxG.keys.pressed("RIGHT") && x + step < rightpoint){
 				x  += step;
 			}
