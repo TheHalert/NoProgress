@@ -1,4 +1,4 @@
-package  
+package  Pong 
 {
 	import flash.automation.KeyboardAutomationAction;
 	import Pong.*;
@@ -52,7 +52,7 @@ package
 		{	
 			if ( FlxG.keys.SPACE )
 			{
-				m_bullets.fire( m_playerPad.x, m_playerPad.y, 400 );
+				m_bullets.fire( m_playerPad.x, m_playerPad.getMidpoint().y - 5, 400 );
 			}
 			
 			if ( m_ball.overlaps( m_playerPad ) )

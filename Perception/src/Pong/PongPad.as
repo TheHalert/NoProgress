@@ -38,6 +38,17 @@ package  Pong
 		
 		private function updatePlayer():void 
 		{
+			if ( this.y + height > FlxG.height )
+			{
+				this.y = FlxG.height - height;
+				return;
+			}
+			else if ( this.y <= 0 )
+			{
+				this.y = 1;
+				return;
+			}
+			
 			if ( FlxG.keys.DOWN )
 			{
 				velocity.y = maxVelocity.y;

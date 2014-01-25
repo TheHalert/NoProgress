@@ -9,12 +9,13 @@ package Pong
 	 */
 	public class PongBullet extends FlxSprite
 	{
-		[Embed(source = "/image/pongBall.png")] private var m_texture:Class;
+		[Embed(source = "/image/bullets.png")] private var m_texture:Class;
 		private var m_xSpeed:int;
 		
 		public function PongBullet() 
 		{
 			super( 0, 0, m_texture );
+			this.angle = 90;
 			exists = false;
 		}
 		
