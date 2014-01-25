@@ -7,30 +7,38 @@ package SpaceInvader
 	 */
 	public class Alien extends FlxSprite
 	{
-		static var starttime:Number = 0;
-		var lastjump:Number = 0;
-		var leftpoint:FlxPoint;
-		var rightpoint:FlxPoint;
+		[Embed(source = '../image/spacemonster.png')] private var alienimage:Class;
+		static var nextjumpex:Number = 0;
+		var nextjump:Number = 0;
+		var leftpoint:Number;
+		var rightpoint:Number;
 		var movingright:Boolean;
-		var step:Number = 5;
+		var step:Number = 10;
 		var laststep:int;
-		public function Alien() 
+		public function Alien(lpos:Number,rpos:Number, ypos:Number) 
 		{
-			if (starttime == 0)
-				starttime = new Date().time;
-			lastjump = starttime();
+			super(0, 0, alienimage);
+			x = lpos;
+			y = ypos;
+			leftpoint = lpos;
+			rightpoint = rpos;
+			if (nextjumpex == 0)
+				nextjumpex = new Date().time + 500;
+			nextjump = nextjumpex;
 			movingright = true;
 		}
-		public function update():void {
+		public override function update():void {
 			super.update();
-			if ((new Date().time - starttime) > 50) {
-				lastjump = new Date().time;
+			if ((new Date().time - nextjump) > 0) {
+				if(nextjump == nextjumpex)
+					nextjumpex = new Date().time + 500; 
+				nextjump = nextjumpex;
 				if(movingright)
 					x += step;
 				else
 					x -= step;
 				if (x >= rightpoint || x <= leftpoint){
-					y -= (step * 10)
+					y += (step * 3)
 					movingright = !movingright;
 				}
 				

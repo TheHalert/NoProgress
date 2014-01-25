@@ -49,7 +49,7 @@ package
 		private function downkey(e:KeyboardEvent = null):void {
 			//if F is press togglefullscreen
 			if (FlxG.keys.justPressed("F")){
-				toggle_fullscreen();
+				//toggle_fullscreen();
 				
 			}
 		}
