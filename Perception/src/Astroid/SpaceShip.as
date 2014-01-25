@@ -13,12 +13,12 @@ package Astroid
 		{
 			super(xpos, ypos, shipimage);
 			
-			
+			health = 100;
 		}
 		override public function update():void 
 		{
 			super.update();
-		
+			
 			if (FlxG.keys.pressed("RIGHT")){
 				angle += 5;
 			}
@@ -65,7 +65,7 @@ package Astroid
 			if (Ending.endingrunning)
 				return;
 			astroid.kill();
-			ship.health -= 50;
+			ship.health -= 100;
 		}
 		
 	}
