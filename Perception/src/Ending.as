@@ -9,6 +9,7 @@ package
 	{
 		[Embed(source = 'image/congratulations.png')] private var gratz:Class;
 		[Embed(source = 'image/youaredead.png')] private var dead:Class;
+		[Embed(source = 'audio/tada.mp3')] private var tada:Class;
 		var nextstate:FlxState;
 		static public var endingrunning:Boolean = false;
 		static public var starttime:Number;
@@ -28,6 +29,8 @@ package
 				return;
 			
 			}
+			if (victory)
+				FlxG.play(tada);
 			endingrunning = true;
 			this.victory = victory;
 			nextstate = nstate;

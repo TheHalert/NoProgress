@@ -70,7 +70,7 @@ package SpaceInvader
 			}
 			FlxG.overlap(monsters, bullets, bullethitmonster);
 			if(FlxG.overlap(ship, exit)){
-				var ending:Ending = new Ending(true, new BreakoutState);
+				var ending:Ending = new Ending(true, new AstroidGame);
 				add(ending);
 			}
 			

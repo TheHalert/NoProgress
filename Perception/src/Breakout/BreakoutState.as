@@ -27,7 +27,7 @@ package Breakout
 			m_pad = new BoPad( FlxG.width / 2, FlxG.height - 100, 400 );
 			add( m_pad );
 			
-			m_ball = new BoBall( FlxG.width / 2, FlxG.height / 2, 300, 0 );
+			m_ball = new BoBall( FlxG.width / 2, FlxG.height / 2, 300, -15 );
 			m_ball.ResetVelocity( 360 );
 			add( m_ball );
 					

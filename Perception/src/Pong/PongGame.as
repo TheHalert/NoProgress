@@ -22,7 +22,8 @@ package  Pong
 		public var m_aiScore:int = 0;
 		public var m_playerText:FlxText;
 		public var m_aiText:FlxText;
-		
+		private var lastshot:Number;
+		[Embed(source = '../audio/cannon.mp3')] private var cannon:Class;
 		public function PongGame() 
 		{
 		}
@@ -48,13 +49,16 @@ package  Pong
 			add( m_playerText );
 			add( m_aiText );
 			super.create()
+			lastshot = new Date().time;
 		}
 		
 		public override function update():void 
 		{	
-			if ( FlxG.keys.SPACE )
+			if ( FlxG.keys.SPACE && new Date().time - lastshot > 400 )
 			{
 				m_bullets.fire( m_playerPad.x, m_playerPad.getMidpoint().y - 5, 400 );
+				lastshot = new Date().time;
+				FlxG.play(cannon);
 			}
 			m_aiPad.y = m_ball.m_ballpointforbat;
 			if ( m_ball.overlaps( m_playerPad ) )
@@ -70,7 +74,7 @@ package  Pong
 			{
 				m_playerScore++;
 				m_playerText.text = m_playerScore.toString();
-				if ( m_playerScore >= 5 )
+				if ( m_playerScore >= 3 )
 				{
 					var ending:Ending = new Ending(true, new SpaceInvader.InvaderGame());
 					add(ending);
