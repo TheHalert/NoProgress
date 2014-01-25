@@ -49,11 +49,6 @@ package SpaceInvader
 			ship.health -= 50;
 			bullet.kill();
 		}
-		override public function kill():void 
-		{
-			super.kill();
-			FlxG.resetState();
-		}
 		
 		
 		
