@@ -8,9 +8,12 @@ package Astroid
 	public class SpaceShip extends FlxSprite
 	{
 		[Embed(source = '../image/spaceship.png')] private var shipimage:Class;
+		
 		public function SpaceShip(xpos:Number, ypos:Number) 
 		{
 			super(xpos, ypos, shipimage);
+			
+			
 		}
 		override public function update():void 
 		{
@@ -59,6 +62,8 @@ package Astroid
 			}
 		}
 		public function hitastroid(ship:SpaceShip, astroid:Astroid ):void {
+			if (Ending.endingrunning)
+				return;
 			astroid.kill();
 			ship.health -= 50;
 		}

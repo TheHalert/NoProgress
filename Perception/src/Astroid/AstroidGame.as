@@ -11,6 +11,9 @@ package Astroid
 		var astroids:FlxGroup = new FlxGroup();
 		var bullets:FlxGroup = new FlxGroup();
 		private var lastshot:Number;
+		[Embed(source = '../image/warpdrive.png')] private var warpimage:Class;
+		var warp:FlxSprite;
+		
 		public function AstroidGame() 
 		{
 			
@@ -21,6 +24,9 @@ package Astroid
 			FlxG.worldBounds.make(0, 0, FlxG.width, FlxG.height );
 			ship = new SpaceShip(FlxG.width / 2, FlxG.height / 2);
 			add(ship);
+			warp = new FlxSprite(ship.x, ship.y, warpimage);
+			warp.alpha = 0;
+			add(warp);
 			for (var i:int = 0; i < 5; i++) {
 				spawnastroid();
 			}
@@ -31,18 +37,25 @@ package Astroid
 		override public function update():void 
 		{
 			super.update();
+			warp.x = ship.x;
+			warp.y = ship.y;
 			if (ship.health <= 0){
 				var ending:Ending = new Ending(false);
 				add(ending);
+				
 			}
 			FlxG.overlap(ship, astroids, ship.hitastroid);
 			FlxG.overlap(bullets, astroids, bullethitmonster);
 			if (Math.sqrt(ship.velocity.x * ship.velocity.x + ship.velocity.y * ship.velocity.y) > 1100) {
 				var ending:Ending = new Ending(true, new Mainmenu);
 				add(ending);
+			
 			}
+			if (Ending.endingrunning && ship.health > 0)
+				warp.alpha += 0.004;
+			
 			if (FlxG.keys.justPressed("SPACE") && new Date().time - lastshot > 500) {
-				var bullet:Bullet = new Bullet(ship.x + (ship.width / 5), ship.y, ship.angle);
+				var bullet:Bullet = new Bullet(ship.x + (ship.width / 5), ship.y, ship.angle, ship.velocity.magnitude());
 				bullets.add(bullet);
 				lastshot = new Date().time;
 			}

@@ -10,12 +10,12 @@ package Astroid
 	
 		[Embed(source = "/image/bullets.png")] private var bullet:Class;
 	
-		public function Bullet(xstart:Number, ystart:Number, angleshot:Number) 
+		public function Bullet(xstart:Number, ystart:Number, angleshot:Number, speed:Number) 
 		{
 		
 			super(xstart, ystart, bullet);
-			velocity.x += Math.sin((angleshot /180) * Math.PI) *  400;
-			velocity.y -= Math.cos((angleshot / 180) * Math.PI) * 400;
+			velocity.x += Math.sin((angleshot /180) * Math.PI) * (speed + 300);
+			velocity.y -= Math.cos((angleshot / 180) * Math.PI) * (speed + 300);
 			angle = angleshot;
 			
 		}
