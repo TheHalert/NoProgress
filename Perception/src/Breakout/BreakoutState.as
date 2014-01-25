@@ -58,6 +58,7 @@ package Breakout
 			
 			m_worldBoundAtStart = FlxG.worldBounds;
 			FlxG.worldBounds = new FlxRect( 0, 0, FlxG.width, FlxG.height + 520 );
+			//FlxG.camera.follow(m_ball);
 			super.create();
 		}
 	

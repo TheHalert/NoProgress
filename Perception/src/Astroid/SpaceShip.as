@@ -15,6 +15,7 @@ package Astroid
 		override public function update():void 
 		{
 			super.update();
+		
 			if (FlxG.keys.pressed("RIGHT")){
 				angle += 5;
 			}
@@ -56,6 +57,10 @@ package Astroid
 			if (y > FlxG.height) {
 				y = 0;
 			}
+		}
+		public function hitastroid(ship:SpaceShip, astroid:Astroid ):void {
+			astroid.kill();
+			ship.health -= 50;
 		}
 		
 	}

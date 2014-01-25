@@ -10,16 +10,23 @@ package
 		[Embed(source = 'image/congratulations.png')] private var gratz:Class;
 		[Embed(source = 'image/youaredead.png')] private var dead:Class;
 		var nextstate:FlxState;
-		var starttime:Number;
+		static var starttime:Number;
 		var victory:Boolean
 		public function Ending(victory:Boolean ,nstate:FlxState = null) 
 		{
+		
+			
 			var imagetoload:Class
 			if (victory)
 				imagetoload = gratz;
 			else
 				imagetoload = dead;
 			super(0, 0, imagetoload);
+			if (new Date().time - starttime < 7000) {
+				kill();
+				return;
+			
+			}
 			this.victory = victory;
 			nextstate = nstate;
 			scrollFactor = new FlxPoint(0,0);
@@ -33,6 +40,7 @@ package
 		{
 			super.update();
 			if (new Date().time - starttime > 5000) {
+				
 				if (victory) {
 					FlxG.switchState(nextstate);
 				}else {
