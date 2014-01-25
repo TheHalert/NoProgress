@@ -37,18 +37,20 @@ package Breakout
 			
 			m_topBricks = new FlxGroup( numCols * _BRICK_LINES );
 			m_mirrorBlocks = new FlxGroup( numCols * _BRICK_LINES );
+			var mirrorGap = 60;
+			var blockOffset = 16;
 			
 			for ( var ii = 0; ii < numCols; ++ii )
 			{
 				for ( var kk = 0; kk < _BRICK_LINES; ++kk )
 				{
 					var xPos = ii * ( brickWidth + 1 ) + 3;
-					var yPos = ( kk * ( brickHeight + 1 ) ) + 16;
+					var yPos = ( kk * ( brickHeight + 1 ) ) + blockOffset;
 					var id = ( ii * numCols ) + kk;
 					var col = ( 0x2EF8E300 ) *  ( kk + 1 );
 					m_topBricks.add( new BoBrick( id, xPos, yPos, brickWidth, brickHeight, col ) );
 					
-					yPos = FlxG.height + 60 + ( ( _BRICK_LINES - 1 - kk ) * ( brickHeight + 1 ) ) + 16;
+					yPos = FlxG.height + mirrorGap + ( ( _BRICK_LINES - 1 - kk ) * ( brickHeight + 1 ) ) + blockOffset;
 					m_mirrorBlocks.add( new BoBrick( id, xPos, yPos, brickWidth, brickHeight, col ) );
 				}
 			}
@@ -57,8 +59,9 @@ package Breakout
 			add( m_mirrorBlocks );
 			
 			m_worldBoundAtStart = FlxG.worldBounds;
-			FlxG.worldBounds = new FlxRect( 0, 0, FlxG.width, FlxG.height + 520 );
-			//FlxG.camera.follow(m_ball);
+			var bottom = FlxG.height + mirrorGap + ( ( _BRICK_LINES ) * ( brickHeight + 1 ) ) + blockOffset;
+			FlxG.worldBounds = new FlxRect( 0, 0, FlxG.width, bottom ); //FlxG.height + 520 );
+			m_ball.m_bottom = bottom;
 			super.create();
 		}
 	

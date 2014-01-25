@@ -13,7 +13,7 @@ package Pong
 		private var m_ballSpeed:Number = 0;
 		private var m_isSkip:Boolean;
 		
-		protected var m_bottom:int = FlxG.height;
+		public var m_bottom:int = FlxG.height;
 		
 		public function PongBall(x:int, y:int, speed:int, rotation:int = 0, isSetRandom:Boolean = true) 
 		{

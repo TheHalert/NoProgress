@@ -13,7 +13,7 @@ package Breakout
 		public function BoBall(x:int, y:int, speed:int, rotation:int) 
 		{	
 			super( x, y, speed, rotation, false );
-			m_bottom = FlxG.height * 1.5;
+			m_bottom = FlxG.height;// * 1.5;
 		}
 		
 		override public function RestrictToScreen():void 
@@ -36,7 +36,7 @@ package Breakout
 			}			
 			else if ( this.y + height >= m_bottom )
 			{
-				y = FlxG.height - height - 1;
+				y = m_bottom - height - 1;
 				ResetVelocity( 360 );
 			}	
 		}
