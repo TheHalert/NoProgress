@@ -9,6 +9,7 @@ package
 	import SpaceInvader.InvaderGame;
 	import Pong.PongGame;
 	import Breakout.BreakoutState;
+	import Fight.FightGame;
 	
 	/**
 	 * ...
@@ -20,6 +21,7 @@ package
 		public var startbuttoninvader:FlxButton;
 		public var startbuttonastroid:FlxButton;
 		public var startbuttonbreakout:FlxButton;
+		public var startbuttonfight:FlxButton;
 		public function Mainmenu() 
 		{
 			
@@ -53,6 +55,12 @@ package
 			startbuttonbreakout.x = startbuttonpong.x + startbuttonpong.width + 40;
 			startbuttonbreakout.y = FlxG.height / 2 - startbuttonbreakout.height / 2;
 			add( startbuttonbreakout );
+			
+			// fight button
+			startbuttonfight = new FlxButton( 0, 0, "Start Fight", startfightgame );
+			startbuttonfight.x = startbuttonbreakout.x + startbuttonbreakout.width + 40;
+			startbuttonfight.y = FlxG.height / 2 - startbuttonfight.height / 2;
+			add( startbuttonfight );
 		}
 		public function startgameinvader():void {
 			//hide mouse and switch state
@@ -73,6 +81,11 @@ package
 			//hide mouse and switch state
 			FlxG.mouse.hide();
 			FlxG.switchState(new BreakoutState );
+		}
+		public function startfightgame():void {
+			//hide mouse and switch state
+			FlxG.mouse.hide();
+			FlxG.switchState( new FightGame );
 		}
 		private function downkey(e:KeyboardEvent = null):void {
 			//if F is press togglefullscreen

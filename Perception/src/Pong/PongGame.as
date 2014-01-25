@@ -11,6 +11,8 @@ package  Pong
 	 */
 	public class PongGame extends FlxState
 	{
+		//[Embed(source = "/image/centerline.png")] private var m_lineTexture:Class;
+		
 		private var m_playerPad:PongPad;
 		private var m_aiPad:PongPad;
 		private var m_ball:PongBall;

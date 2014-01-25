@@ -8,7 +8,7 @@ package Pong
 	 */
 	public class PongBall extends FlxSprite
 	{
-		[Embed(source = "/image/pongBall.png")] private var m_padTexture:Class;
+		[Embed(source = "/image/ball.png")] private var m_padTexture:Class;
 		[Embed(source = "/audio/pong.mp3")] private var pongsound:Class;
 		private var m_ballAngle:Number = 0;
 		private var m_ballSpeed:Number = 0;
@@ -39,6 +39,7 @@ package Pong
 		
 		override public function update():void
 		{			
+			angle = ( angle += 5 ) % 360;
 			if ( m_isSkip )
 			{
 				m_isSkip = false;
