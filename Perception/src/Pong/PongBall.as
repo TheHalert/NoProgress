@@ -17,22 +17,17 @@ package Pong
 		public var m_ballpointforbat:Number;
 		public var m_bottom:int = FlxG.height;
 		
-		public function PongBall(x:int, y:int, speed:int, rotation:int = 0, isSetRandom:Boolean = true) 
+		public function PongBall(x:int, y:int, speed:int, rotation:int = 0) 
 		{
 			super( x, y, m_padTexture );
 			m_ballSpeed = speed;	
 			m_isSkip = false;
 			
-			if ( isSetRandom )
-			{
-				ResetVelocity( 360 );
-			}
-			else
-			{
-				m_ballAngle = ( rotation - 15 ) % 360;;
-				velocity.y = Math.sin( m_ballAngle * Math.PI / 360 ) * m_ballSpeed;
-				velocity.x = Math.cos( m_ballAngle * Math.PI / 360 ) * m_ballSpeed;
-			}
+		
+			m_ballAngle = ( rotation ) % 360;;
+			velocity.y = Math.sin( m_ballAngle * Math.PI / 360 ) * m_ballSpeed;
+			velocity.x = Math.cos( m_ballAngle * Math.PI / 360 ) * m_ballSpeed;
+			
 			
 			
 		}

@@ -33,7 +33,7 @@ package  Pong
 			m_aiPad = new PongPad( FlxG.width - 20, FlxG.height / 2, true );
 			add( m_aiPad );
 			
-			m_ball = new PongBall( FlxG.width / 2, FlxG.height / 2, 150 );
+			m_ball = new PongBall( FlxG.width / 2, FlxG.height / 2, 180, 315 );
 			add( m_ball );
 			
 			m_bullets = new PongBulletManager( 40 );

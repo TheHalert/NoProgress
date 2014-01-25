@@ -12,7 +12,7 @@ package Breakout
 		[Embed(source = "/audio/pong.mp3")] private var pongsound:Class;
 		public function BoBall(x:int, y:int, speed:int, rotation:int) 
 		{	
-			super( x, y, speed, rotation, false );
+			super( x, y, speed ,rotation );
 			m_bottom = FlxG.height;// * 1.5;
 		}
 		
