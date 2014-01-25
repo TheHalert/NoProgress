@@ -1,6 +1,7 @@
 package SpaceInvader
 {
 	import Astroid.AstroidGame;
+	import Breakout.BreakoutState;
 	import org.flixel.*;
 	/**
 	 * ...
@@ -64,7 +65,7 @@ package SpaceInvader
 			}
 			FlxG.overlap(monsters, bullets, bullethitmonster);
 			if(FlxG.overlap(ship, exit)){
-				var ending:Ending = new Ending(true, new AstroidGame);
+				var ending:Ending = new Ending(true, new BreakoutState);
 				add(ending);
 			}
 			
