@@ -1,5 +1,6 @@
 package Pong
 {
+	import flash.events.DRMAuthenticationCompleteEvent;
 	import org.flixel.*;
 	/**
 	 * ...
@@ -12,7 +13,8 @@ package Pong
 		private var m_ballAngle:Number = 0;
 		private var m_ballSpeed:Number = 0;
 		private var m_isSkip:Boolean;
-		
+		private var m_lastcheck:Number;
+		public var m_ballpointforbat:Number;
 		public var m_bottom:int = FlxG.height;
 		
 		public function PongBall(x:int, y:int, speed:int, rotation:int = 0, isSetRandom:Boolean = true) 
@@ -31,6 +33,8 @@ package Pong
 				velocity.y = Math.sin( m_ballAngle * Math.PI / 360 ) * m_ballSpeed;
 				velocity.x = Math.cos( m_ballAngle * Math.PI / 360 ) * m_ballSpeed;
 			}
+			
+			
 		}
 		
 		public function GetRandom( min:Number, max:Number ):Number 
@@ -45,6 +49,14 @@ package Pong
 				m_isSkip = false;
 				return;
 			}
+			if(velocity.y < 0)
+				m_ballpointforbat = y + (velocity.y );
+			else
+				m_ballpointforbat = y - (velocity.y );
+			if (m_ballpointforbat < 0)
+				m_ballpointforbat =  0;
+			else if (m_ballpointforbat >FlxG.height - 40)
+				m_ballpointforbat = FlxG.height - 40;
 			
 			RestrictToScreen();
 		}		

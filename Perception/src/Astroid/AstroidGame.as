@@ -42,11 +42,11 @@ package Astroid
 			if (ship.health <= 0){
 				var ending:Ending = new Ending(false);
 				add(ending);
-				
+				ship.kill();
 			}
 			FlxG.overlap(ship, astroids, ship.hitastroid);
 			FlxG.overlap(bullets, astroids, bullethitmonster);
-			if (Math.sqrt(ship.velocity.x * ship.velocity.x + ship.velocity.y * ship.velocity.y) > 1100) {
+			if (Math.sqrt(ship.velocity.x * ship.velocity.x + ship.velocity.y * ship.velocity.y) > 900) {
 				var ending:Ending = new Ending(true, new Mainmenu);
 				add(ending);
 			
@@ -54,7 +54,7 @@ package Astroid
 			if (Ending.endingrunning && ship.health > 0)
 				warp.alpha += 0.004;
 			
-			if (FlxG.keys.justPressed("SPACE") && new Date().time - lastshot > 500) {
+			if (FlxG.keys.justPressed("SPACE") && new Date().time - lastshot > 500 && ship.alive) {
 				var bullet:Bullet = new Bullet(ship.x + (ship.width / 5), ship.y, ship.angle, ship.velocity.magnitude());
 				bullets.add(bullet);
 				lastshot = new Date().time;

@@ -68,7 +68,7 @@ package  Pong
 				m_isSkip = false;
 				return;
 			}
-			
+			return;
 			if ( this.y <= 0 )//isTouching( UP ) )
 			{		
 				this.y = 10;

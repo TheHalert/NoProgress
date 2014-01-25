@@ -54,7 +54,7 @@ package  Pong
 			{
 				m_bullets.fire( m_playerPad.x, m_playerPad.getMidpoint().y - 5, 400 );
 			}
-			
+			m_aiPad.y = m_ball.m_ballpointforbat;
 			if ( m_ball.overlaps( m_playerPad ) )
 			{
 				m_ball.onPadCollision( m_playerPad );
@@ -68,7 +68,7 @@ package  Pong
 			{
 				m_playerScore++;
 				m_playerText.text = m_playerScore.toString();
-				if ( m_playerScore >= 10 )
+				if ( m_playerScore >= 5 )
 				{
 					var ending:Ending = new Ending(true, new SpaceInvader.InvaderGame());
 					add(ending);
