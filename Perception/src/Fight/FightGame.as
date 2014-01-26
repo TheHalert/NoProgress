@@ -1,5 +1,6 @@
 package Fight 
 {
+	import Breakout.BreakoutState;
 	import flash.automation.KeyboardAutomationAction;
 	import flash.display.BitmapData;
 	import org.flixel.*;
@@ -64,7 +65,7 @@ package Fight
 					}
 				}
 				if(endingreach){
-					var ending:Ending = new Ending( true, new Mainmenu );
+					var ending:Ending = new Ending( true, new BreakoutState );
 					add( ending );
 					m_player.setupEnd();
 					m_enemy.Setupend();
@@ -78,7 +79,7 @@ package Fight
 				lastswing = new Date().time;
 				FlxG.overlap(m_player, enemies, m_player.playerhitenemy);
 			}
-			if (new Date().time - lastspawn > 0) {
+			if (new Date().time - lastspawn > 0 && !m_player.m_isEnd) {
 				var newenemy:FiEnemy = new FiEnemy( FlxG.width - 10, 80, -80 );
 				enemies.add( newenemy );
 				lastspawn = new Date().time + Tools.getRandomBetween(500, 4000);

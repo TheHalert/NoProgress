@@ -43,7 +43,7 @@ package
 			startbuttoninvader.y = FlxG.height / 2 - startbuttoninvader.height / 2;
 			add(startbuttoninvader);
 			//the pong button
-			startbuttonpong = new FlxButton(0, 0, "Start pong" , startgamepong);
+			startbuttonpong = new FlxButton(0, 0, "Start " , startgamepong);
 			startbuttonpong.x = FlxG.width / 2 - startbuttonpong.width / 2 ;
 			startbuttonpong.y = FlxG.height / 2 - startbuttonpong.height / 2;
 			add(startbuttonpong);

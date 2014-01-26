@@ -39,6 +39,7 @@ package Fight
 			}
 			if (swingtime != 0 && new Date().time - swingtime > 250) {
 				loadGraphic(m_texture1);
+				swingtime = 0;
 			}
 			velocity.x = 0;
 			if ( this.x + width > FlxG.width )

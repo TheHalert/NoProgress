@@ -8,7 +8,8 @@ package Fight
 	 */
 	public class FiEnemy extends FlxSprite
 	{
-		[Embed(source = "/image/lion_1.png")] private var m_texture:Class;
+		[Embed(source = "/image/lion_1.png")] private var m_texture1:Class;
+		[Embed(source = "/image/goat.png")] private var m_texture2:Class;
 		public var LifeTime:int;
 		private var m_speed:int;
 		private var m_isEnd:Boolean;
@@ -17,7 +18,12 @@ package Fight
 		
 		public function FiEnemy( posX:int, offsetY:int, speed:int ) 
 		{
-			super( posX, 0, m_texture );
+			var imagetoload:Class;
+			if (Tools.getRandomBetween(0, 1) == 1)
+				imagetoload = m_texture1;
+			else
+				imagetoload = m_texture2;
+			super( posX, 0, imagetoload );
 			this.y = FlxG.height - height - offsetY;
 			m_speed = speed;
 			//maxVelocity.x = speed;

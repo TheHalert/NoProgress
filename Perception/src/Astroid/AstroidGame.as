@@ -1,6 +1,7 @@
 package Astroid 
 {
 	import Breakout.BreakoutState;
+	import Fight.FightGame;
 	import org.flixel.*;
 	/**
 	 * ...
@@ -60,7 +61,7 @@ package Astroid
 			if (Math.sqrt(ship.velocity.x * ship.velocity.x + ship.velocity.y * ship.velocity.y) > 900) {
 				if (!Ending.endingrunning)
 					FlxG.play(warpsound);
-				var ending:Ending = new Ending(true, new BreakoutState);
+				var ending:Ending = new Ending(true, new FightGame);
 				add(ending);
 				
 			}

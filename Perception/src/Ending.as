@@ -46,6 +46,7 @@ package
 			super.update();
 			if (new Date().time - starttime > 5000) {
 				endingrunning = false;
+				FlxG.bgColor = 0xFF000000;
 				if (victory) {
 					FlxG.switchState(nextstate);
 				}else {
