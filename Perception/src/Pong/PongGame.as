@@ -11,25 +11,31 @@ package  Pong
 	 */
 	public class PongGame extends FlxState
 	{
-		//[Embed(source = "/image/centerline.png")] private var m_lineTexture:Class;
+		[Embed(source = "/image/centerline.png")] private var m_lineTexture:Class;
+		[Embed(source = '../audio/cannon.mp3')] private var cannon:Class;
 		
 		private var m_playerPad:PongPad;
 		private var m_aiPad:PongPad;
 		private var m_ball:PongBall;
 		private var m_bullets:PongBulletManager;
+		private var m_line:FlxSprite;
 		
 		public var m_playerScore:int = 0;
 		public var m_aiScore:int = 0;
 		public var m_playerText:FlxText;
 		public var m_aiText:FlxText;
-		private var lastshot:Number;
-		[Embed(source = '../audio/cannon.mp3')] private var cannon:Class;
+		private var lastshot:Number;	
+		
 		public function PongGame() 
 		{
 		}
 	
 		public override function create():void
 		{
+			m_line = new FlxSprite( 0, 0, m_lineTexture );
+			m_line.x = ( FlxG.width / 2 ) - ( m_line.width / 2 );
+			add( m_line );
+			
 			m_playerPad = new PongPad( 20, FlxG.height / 2, false );
 			add( m_playerPad );
 			

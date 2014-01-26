@@ -8,7 +8,7 @@ package Pong
 	 */
 	public class PongBall extends FlxSprite
 	{
-		[Embed(source = "/image/ball.png")] private var m_padTexture:Class;
+		[Embed(source = "/image/ball.png")] private var m_texture:Class;
 		[Embed(source = "/audio/pong.mp3")] private var pongsound:Class;
 		private var m_ballAngle:Number = 0;
 		private var m_ballSpeed:Number = 0;
@@ -19,7 +19,7 @@ package Pong
 		
 		public function PongBall(x:int, y:int, speed:int, rotation:int = 0) 
 		{
-			super( x, y, m_padTexture );
+			super( x, y, m_texture );
 			m_ballSpeed = speed;	
 			m_isSkip = false;
 			

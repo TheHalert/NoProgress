@@ -51,8 +51,19 @@ package Breakout
 			{
 				this.y = pad.y + pad.height + 1;
 			}
+			
+			if ( FlxG.keys.LEFT )
+			{
+				velocity.x -= 80;
+				//m_ballAngle = ( m_ballAngle + 15 ) % 360;
+			}
+			else if ( FlxG.keys.RIGHT )
+			{
+				velocity.x += 80;
+				//m_ballAngle = ( m_ballAngle + 15 ) % 360;
+			}
 			velocity.y *= -1;
-			FlxG.play(pongsound);
+			FlxG.play( pongsound );
 		}
 		
 		public static function onCollisionWithBrick( ball:BoBall, brick:BoBrick )

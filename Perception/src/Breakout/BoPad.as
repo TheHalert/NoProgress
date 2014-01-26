@@ -12,7 +12,7 @@ package Breakout
 		public function BoPad(posX:int, posY:int, speed:int) 
 		{
 			super( posX, posY );
-			makeGraphic( 65, 10 );
+			makeGraphic( 80, 10 );
 			
 			maxVelocity.x = speed;
 		}
