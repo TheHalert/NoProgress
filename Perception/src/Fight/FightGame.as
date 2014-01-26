@@ -74,6 +74,7 @@ package Fight
 			if ( FlxG.keys.SPACE && !m_player.m_isEnd && new Date().time - lastswing > 500)
 			{
 				FlxG.play(swordsound);
+				m_player.swing();
 				lastswing = new Date().time;
 				FlxG.overlap(m_player, enemies, m_player.playerhitenemy);
 			}
