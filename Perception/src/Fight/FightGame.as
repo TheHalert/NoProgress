@@ -1,6 +1,7 @@
 package Fight 
 {
 	import flash.automation.KeyboardAutomationAction;
+	import flash.display.BitmapData;
 	import org.flixel.*;
 	import Mainmenu;
 	
@@ -11,11 +12,12 @@ package Fight
 	public class FightGame extends FlxState
 	{
 		private var m_player:FiPlayer;
-	
+		[Embed(source = "/image/ground.png")] private var groundimage:Class;
 		private var enemies:FlxGroup= new FlxGroup();
 		private var lastspawn:Number;
 		private const _SECONDS_TO_COMPLETE:int = 10;
 		private var m_isEnd:Boolean;
+		private var ground:FlxSprite;
 		public function FightGame() 
 		{
 			
@@ -23,8 +25,10 @@ package Fight
 		
 		public override function create():void
 		{
+			FlxG.bgColor = 0xFF3BB9FF;
 			m_isEnd = false;
-			
+			ground = new FlxSprite(0, FlxG.height - 80, groundimage);
+			add(ground);
 			m_player = new FiPlayer( 50, 180 );
 			add( m_player );
 			lastspawn = new Date().time;
@@ -68,6 +72,7 @@ package Fight
 			}
 		
 		}
+
 	}
 
 }

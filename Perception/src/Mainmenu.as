@@ -30,6 +30,7 @@ package
 		}
 		override public function create():void {
 			super.create();
+			FlxG.bgColor = 0xFF000000;
 			FlxG.mouse.show();
 				FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, downkey);
 			//make browers take full window for the game
