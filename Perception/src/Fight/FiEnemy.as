@@ -39,10 +39,7 @@ package Fight
 			}
 			LifeTime++;
 			velocity.x = m_speed;
-			if ( this.x < width )
-			{
-				this.x = FlxG.width; 		
-			}
+			 
 			//super.update();
 		}
 		

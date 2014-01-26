@@ -11,10 +11,11 @@ package Fight
 	public class FightGame extends FlxState
 	{
 		private var m_player:FiPlayer;
-		private var m_enemy:FiEnemy;
+	
+		private var enemies:FlxGroup= new FlxGroup();
+		private var lastspawn:Number;
 		private const _SECONDS_TO_COMPLETE:int = 10;
 		private var m_isEnd:Boolean;
-		
 		public function FightGame() 
 		{
 			
@@ -23,29 +24,32 @@ package Fight
 		public override function create():void
 		{
 			m_isEnd = false;
+			
 			m_player = new FiPlayer( 50, 180 );
 			add( m_player );
-			
-			m_enemy = new FiEnemy( FlxG.width - 10, 80, -80 );
-			add( m_enemy );
+			lastspawn = new Date().time;
+			add(enemies);
 		}
 		
 		public override function update():void 
 		{
-			if ( FlxG.keys.SPACE && !m_player.m_isEnd )
-			{
-				if ( m_player.overlaps( m_enemy ) )
-				{
-					m_enemy.x = FlxG.width;
-					m_enemy.LifeTime = 0;
-					FlxG.shake();
-				}
-			}
 			
-			if ( !m_isEnd )
+				super.update();
+			
+			
+			if (!m_isEnd  )
 			{
-				if ( m_enemy.LifeTime >= FlxG.framerate * _SECONDS_TO_COMPLETE )
+				var endingreach:Boolean = false;
+				var m_enemy:FiEnemy;
+				for (var i:int = 0; i < enemies.length; i++)
 				{
+					m_enemy = enemies.members[i];
+					if (m_enemy.x <= 0){
+						endingreach = true;
+						break;
+					}
+				}
+				if(endingreach){
 					var ending:Ending = new Ending( true, new Mainmenu );
 					add( ending );
 					m_player.setupEnd();
@@ -53,7 +57,16 @@ package Fight
 					m_isEnd = true;
 				}
 			}
-			super.update();
+			if ( FlxG.keys.SPACE && !m_player.m_isEnd )
+			{
+				FlxG.overlap(m_player, enemies, m_player.playerhitenemy);
+			}
+			if (new Date().time - lastspawn > 0) {
+				var newenemy:FiEnemy = new FiEnemy( FlxG.width - 10, 80, -80 );
+				enemies.add( newenemy );
+				lastspawn = new Date().time + Tools.getRandomBetween(500, 4000);
+			}
+		
 		}
 	}
 

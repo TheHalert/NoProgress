@@ -87,6 +87,9 @@ package Fight
 			
 			//velocity.x = m_speed;
 		}
+		public function playerhitenemy(player:FiPlayer, enemy:FiEnemy):void {
+			enemy.kill();
+		}
 	}
 
 }
