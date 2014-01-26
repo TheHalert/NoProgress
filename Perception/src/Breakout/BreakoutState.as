@@ -16,7 +16,11 @@ package Breakout
 		private var m_topBricks:FlxGroup;
 		private var m_mirrorBlocks:FlxGroup;		
 		private var m_worldBoundAtStart:FlxRect;
+	
+		private var m_pauser:Pauser;
+		
 		[Embed(source = "/audio/ding.mp3")] private var dingsound:Class;
+		
 		public function BreakoutState() 
 		{
 			
@@ -24,6 +28,8 @@ package Breakout
 		
 		public override function create():void
 		{
+			m_pauser = new Pauser( this );
+			
 			m_pad = new BoPad( FlxG.width / 2, FlxG.height - 100, 400 );
 			add( m_pad );
 			
@@ -67,6 +73,12 @@ package Breakout
 	
 		public override function update():void 
 		{
+			m_pauser.update();
+			if ( m_pauser.IsPaused )
+			{
+				return;
+			}
+
 			if ( m_ball.overlaps( m_pad ) )
 			{
 				m_ball.onCollisionWithPad( m_pad );

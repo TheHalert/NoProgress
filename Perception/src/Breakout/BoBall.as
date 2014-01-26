@@ -7,9 +7,8 @@ package Breakout
 	 * ...
 	 * @author ...
 	 */
-	public class BoBall  extends PongBall
+	public class BoBall extends PongBall
 	{
-		[Embed(source = "/audio/pong.mp3")] private var pongsound:Class;
 		public function BoBall(x:int, y:int, speed:int, rotation:int) 
 		{	
 			super( x, y, speed ,rotation );
@@ -52,14 +51,15 @@ package Breakout
 				this.y = pad.y + pad.height + 1;
 			}
 			
+			var xDiff = 80;
 			if ( FlxG.keys.LEFT )
 			{
-				velocity.x -= 80;
+				velocity.x -= xDiff;
 				//m_ballAngle = ( m_ballAngle + 15 ) % 360;
 			}
 			else if ( FlxG.keys.RIGHT )
 			{
-				velocity.x += 80;
+				velocity.x += xDiff;
 				//m_ballAngle = ( m_ballAngle + 15 ) % 360;
 			}
 			velocity.y *= -1;

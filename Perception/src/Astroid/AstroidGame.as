@@ -16,6 +16,7 @@ package Astroid
 		[Embed(source = '../audio/cannon.mp3')] private var cannon:Class;
 		[Embed(source = '../audio/warp.mp3')] private var warpsound:Class;
 		var warp:FlxSprite;
+		var pauser:Pauser;
 		
 		public function AstroidGame() 
 		{
@@ -36,9 +37,16 @@ package Astroid
 			add(astroids);
 			add(bullets);
 			lastshot = new Date().time;
+			pauser = new Pauser( this );
 		}
 		override public function update():void 
 		{
+			pauser.update();
+			if ( pauser.IsPaused )
+			{
+				return;
+			}
+			
 			super.update();
 			warp.x = ship.x;
 			warp.y = ship.y;

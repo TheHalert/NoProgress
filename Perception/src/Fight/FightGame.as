@@ -20,6 +20,8 @@ package Fight
 		private var m_isEnd:Boolean;
 		private var ground:FlxSprite;
 		private var lastswing:Number;
+		private var m_pauser:Pauser;
+		
 		public function FightGame() 
 		{
 			
@@ -36,14 +38,19 @@ package Fight
 			lastspawn = new Date().time;
 			lastswing = lastspawn;
 			add(enemies);
+			
+			m_pauser = new Pauser( this );
 		}
 		
 		public override function update():void 
 		{
+			m_pauser.update();
+			if ( m_pauser.IsPaused )
+			{
+				return;
+			}
 			
-				super.update();
-			
-			
+			super.update();
 			if (!m_isEnd  )
 			{
 				var endingreach:Boolean = false;
