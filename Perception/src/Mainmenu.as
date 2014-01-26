@@ -22,12 +22,15 @@ package
 		public var startbuttonastroid:FlxButton;
 		public var startbuttonbreakout:FlxButton;
 		public var startbuttonfight:FlxButton;
+		public var title:FlxText;
+		public var message:FlxText;
 		public function Mainmenu() 
 		{
 			
 		}
 		override public function create():void {
 			super.create();
+			FlxG.bgColor = 0xFF000000;
 			FlxG.mouse.show();
 				FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, downkey);
 			//make browers take full window for the game
@@ -61,6 +64,17 @@ package
 			startbuttonfight.x = startbuttonbreakout.x + startbuttonbreakout.width + 40;
 			startbuttonfight.y = FlxG.height / 2 - startbuttonfight.height / 2;
 			add( startbuttonfight );
+			
+			title = new FlxText(0, 0, 200, "Bias");
+			title.size = 50;
+			title.x = FlxG.width / 2 - title.realWidth / 2;
+			title.y = title.height * 1;
+			add(title);
+			message = new FlxText(0, 0, 1000, "overcome your bias to complete every stage")
+			message.size = 24;
+			message.x = FlxG.width / 2 - message.realWidth / 2;
+			message.y = title.height * 3;
+			add(message);
 		}
 		public function startgameinvader():void {
 			//hide mouse and switch state

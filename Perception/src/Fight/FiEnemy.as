@@ -8,7 +8,7 @@ package Fight
 	 */
 	public class FiEnemy extends FlxSprite
 	{
-		[Embed(source = "/image/spacemonster.png")] private var m_texture:Class;
+		[Embed(source = "/image/lion.png")] private var m_texture:Class;
 		public var LifeTime:int;
 		private var m_speed:int;
 		private var m_isEnd:Boolean;

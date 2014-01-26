@@ -9,7 +9,7 @@ package Pong
 	public class PongBall extends FlxSprite
 	{
 		[Embed(source = "/image/ball.png")] private var m_texture:Class;
-		[Embed(source = "/audio/pong.mp3")] private var pongsound:Class;
+		[Embed(source = "/audio/pong.mp3")] protected var pongsound:Class;
 		private var m_ballAngle:Number = 0;
 		private var m_ballSpeed:Number = 0;
 		private var m_isSkip:Boolean;
