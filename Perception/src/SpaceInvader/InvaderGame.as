@@ -21,6 +21,8 @@ package SpaceInvader
 		private var exit:FlxSprite;
 		private var monstersarray:Array = new Array();
 		private var allienlastshot:Number;
+		private var pauser:Pauser;
+		
 		public function InvaderGame() 
 		{
 			
@@ -54,8 +56,15 @@ package SpaceInvader
 			FlxG.camera.follow(camerapoint);
 			lastshot = new Date().time - 1000;
 			allienlastshot = new Date().time - 1000;
+			pauser = new Pauser( this );
 		}
 		public override function update():void {
+			pauser.update();
+			if ( pauser.IsPaused )
+			{
+				return;
+			}
+			
 			super.update();
 			camerapoint.y = ship.y - (FlxG.height / 2) + ship.height * 2;
 			if (ship.health <= 0){

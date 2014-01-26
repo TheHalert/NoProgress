@@ -18,6 +18,8 @@ package Fight
 		private const _SECONDS_TO_COMPLETE:int = 10;
 		private var m_isEnd:Boolean;
 		private var ground:FlxSprite;
+		private var m_pauser:Pauser;
+		
 		public function FightGame() 
 		{
 			
@@ -33,14 +35,19 @@ package Fight
 			add( m_player );
 			lastspawn = new Date().time;
 			add(enemies);
+			
+			m_pauser = new Pauser( this );
 		}
 		
 		public override function update():void 
 		{
+			m_pauser.update();
+			if ( m_pauser.IsPaused )
+			{
+				return;
+			}
 			
-				super.update();
-			
-			
+			super.update();
 			if (!m_isEnd  )
 			{
 				var endingreach:Boolean = false;

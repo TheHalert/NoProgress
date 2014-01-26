@@ -26,12 +26,16 @@ package  Pong
 		public var m_aiText:FlxText;
 		private var lastshot:Number;	
 		
+		private var m_pauser:Pauser;
+		
 		public function PongGame() 
 		{
 		}
 	
 		public override function create():void
 		{
+			m_pauser = new Pauser( this );
+			
 			m_line = new FlxSprite( 0, 0, m_lineTexture );
 			m_line.x = ( FlxG.width / 2 ) - ( m_line.width / 2 );
 			add( m_line );
@@ -60,6 +64,12 @@ package  Pong
 		
 		public override function update():void 
 		{	
+			m_pauser.update();
+			if ( m_pauser.IsPaused )
+			{
+				return;
+			}
+			
 			if ( FlxG.keys.SPACE && new Date().time - lastshot > 400 )
 			{
 				m_bullets.fire( m_playerPad.x, m_playerPad.getMidpoint().y - 5, 400 );
