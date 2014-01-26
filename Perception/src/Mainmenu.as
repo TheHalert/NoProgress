@@ -41,7 +41,7 @@ package
 			startbuttoninvader = new FlxButton(0, 0, "Start invader" , startgameinvader);
 			startbuttoninvader.x = FlxG.width / 2 - startbuttoninvader.width * 2;
 			startbuttoninvader.y = FlxG.height / 2 - startbuttoninvader.height / 2;
-			add(startbuttoninvader);
+		//	add(startbuttoninvader);
 			//the pong button
 			startbuttonpong = new FlxButton(0, 0, "Start " , startgamepong);
 			startbuttonpong.x = FlxG.width / 2 - startbuttonpong.width / 2 ;
@@ -51,19 +51,19 @@ package
 				startbuttonastroid = new FlxButton(0, 0, "Start Astroid" , stargameastroid);
 			startbuttonastroid.x = FlxG.width / 2 - startbuttonastroid.width *4 ;
 			startbuttonastroid.y = FlxG.height / 2 - startbuttonastroid.height / 2;
-			add(startbuttonastroid);
+			//add(startbuttonastroid);
 			
 			// breakout button
 			startbuttonbreakout = new FlxButton( 0, 0, "Start Breakout", startbreakoutgame );
 			startbuttonbreakout.x = startbuttonpong.x + startbuttonpong.width + 40;
 			startbuttonbreakout.y = FlxG.height / 2 - startbuttonbreakout.height / 2;
-			add( startbuttonbreakout );
+			//add( startbuttonbreakout );
 			
 			// fight button
 			startbuttonfight = new FlxButton( 0, 0, "Start Fight", startfightgame );
 			startbuttonfight.x = startbuttonbreakout.x + startbuttonbreakout.width + 40;
 			startbuttonfight.y = FlxG.height / 2 - startbuttonfight.height / 2;
-			add( startbuttonfight );
+			//add( startbuttonfight );
 			
 			title = new FlxText(0, 0, 200, "Bias");
 			title.size = 50;
